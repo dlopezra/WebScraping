@@ -1,6 +1,6 @@
 ## Definición de librerias necesarias
 from Robots import Checks
-from Export import create_pdf
+from Export import CustomPDF
 import whois
 import builtwith
 
@@ -32,5 +32,6 @@ print(tecnologiaWeb)
 ## Propietario de la web
 propietariWeb = whois.whois(URL)
 print(propietariWeb)
-
-create_pdf("test.pdf")
+## Exportació de dades
+exportPdf=CustomPDF()
+exportPdf.informacio_scrap_pdf(SITE + ".pdf",existeixRobots,rob,DELAY_PETICIONES,sitemap,tamanyWeb,tecnologiaWeb,propietariWeb)
