@@ -2,6 +2,7 @@ from reppy.robots import Robots
 from bs4 import BeautifulSoup
 import requests
 import re
+from urllib.request import urlopen
 
 SEARCH_URL="https://www.google.com/search?q="
 
@@ -50,3 +51,18 @@ class Checks():
             return int(''.join(re.findall(r'\d+', contador.text.split()[1])))
         except requests.exceptions.RequestException as e:
             print(e)
+
+    #def download(url, user_agent='wswp', num_retries=2): 
+    #    print('Downloading:', url)
+    #    headers = {'User-agent': user_agent}
+    #    request = Request(url, headers=headers) 
+    #    try:
+    #        html = urlopen(request).read() 
+    #    except URLError as e:
+    #        print('Download error:', e.reason)
+    #        html = None
+    #        if num_retries > 0:
+    #            if hasattr(e, 'code') and 500 <= e.code < 600:
+    #                # retry 5XX HTTP errors
+    #                return download(url, user_agent, num_retries-1)
+    #    return html
