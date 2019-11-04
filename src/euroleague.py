@@ -92,15 +92,14 @@ class euroleague():
         self.estadistiques=""   
 
     def webscrap(self,season):
-        ws=euroleague(self.delay,season)
-        cap=ws.capçalera()
-        self.csv.write(cap)
+        #ws=euroleague(self.delay,season)
         gamecode=1
         urlgame='https://www.euroleague.net/main/results/showgame?gamecode=' + str(gamecode) + '&seasoncode=E' + str(season) + '#!boxscore'
         page = requests.get(urlgame)
         while(page.status_code==200):
-            ws.scrapmatch(page.content)
+            self.scrapmatch(page.content)
             gamecode = gamecode + 1
+            print(urlgame)
             urlgame='https://www.euroleague.net/main/results/showgame?gamecode=' + str(gamecode) + '&seasoncode=E' + str(season) + '#!boxscore'
             time.sleep(self.delay)
             page = requests.get(urlgame)
@@ -110,14 +109,16 @@ class euroleague():
         return cap
 
     def generarCSV(self):
-        ws=euroleague(self.delay,self.season)
+        #ws=euroleague(self.delay,self.season)
+        cap=self.capçalera()
+        self.csv.write(cap)
         if (self.allseasons == 1):
             any = datetime.now()
             anyproces = int(self.season)
             for x in range(anyproces,any.year):
-                ws.webscrap(x)
+                self.webscrap(x)
         else:
-            ws.webscrap(self.season)
+            self.webscrap(self.season)
         self.csv.close()
 
 
