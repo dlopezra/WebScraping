@@ -23,14 +23,14 @@ anycompeticio=sys.argv[PARAMETRES -1]
 
 ## Avaluem el paràmetre introduït per saber quines llibreries carreguem i quines constants 
 ## definim segons el tipus de competició
-if (competicio == "euroleague"):
+if (competicio.lower() == "euroleague"):
     from euroleague import *
     URL = "https://www.euroleague.net"
     URI_ROBOTS = "/robots.txt"
     SITE = "euroleague.net"
-elif (competicio == "nba"):
+elif (competicio.lower() == "nba"):
     from nba import *
-elif (competicio == "acb"):
+elif (competicio.lower() == "acb"):
     from acb import *
 
 ## Comprobem si la URL conté el fitxer robots.txt
@@ -45,7 +45,7 @@ if (existeixRobots):
     sitemap = rob.sitemaps
 
 ## Avaluem les URL's de la competició especificada que contenen les estadístiques
-if (competicio == "euroleague"):
+if (competicio.lower() == "euroleague"):
     print("La url d'estadistiques esta permesa?",testRobots.url_permesa("https://www.euroleague.net/main/statistics",USER_AGENT))
     print("La url de resultats esta permesa?",testRobots.url_permesa("https://www.euroleague.net/main/results",USER_AGENT))
 
