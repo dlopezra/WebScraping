@@ -32,10 +32,12 @@ Per a la pràctica s'han generat dos datasets corresponents a les dades de les t
 
 Per a poder executar el codi font abans esmentat es requereix la instal·lació de les següents llibrerires:
 ```
-pip install requests
-pip install lxml
-pip install beautifulsoup4
-pip install fpdf
+pip3 install requests
+pip3 install lxml
+pip3 install beautifulsoup4
+pip3 install fpdf
+pip3 install buildwith
+pip3 install python-whois
 ```
 ## Execució
 
