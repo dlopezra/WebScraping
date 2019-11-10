@@ -1,32 +1,27 @@
 from fpdf import FPDF
 
+## classe que defineix la generació del document PDF amb la informació de la pàgina a avaluar.
 class CustomPDF(FPDF):
  
+ ## Es defineix la funció que crearà la capçalera del document
     def header(self):
-        # Set up a logo
-        #self.image('snakehead.jpg', 10, 8, 33)
         self.set_font('Arial', 'B', 10)
- 
-        # Add an address
         self.cell(100)
         self.cell(0, 5, 'Daniel Lòpez', ln=1)
         self.cell(100)
         self.cell(0, 5, 'Tipologia i cicle de vida de les dades', ln=1)
         self.cell(100)
         self.cell(0, 5, 'PRAC 1', ln=1)
- 
-        # Line break
         self.ln(20)
  
+ ## Es defineix la funció que crearà el peu de pàgina del document
     def footer(self):
         self.set_y(-10)
- 
         self.set_font('Arial', 'I', 8)
- 
-        # Add a page number
         page = 'Pàgina ' + str(self.page_no()) + '/{nb}'
         self.cell(0, 10, page, 0, 0, 'C')
 
+## Es defineix la funció que crearà el contingut del document amb la informació generada per les consultes realitzades
     def informacio_scrap_pdf(self,pdf_path,existeixRobots,rob,delay,sitemap,tamanyWeb,tecnologiaWeb,propietariWeb):
         pdf = CustomPDF()
         # Create the special value {nb}

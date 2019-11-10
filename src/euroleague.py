@@ -5,13 +5,15 @@ from datetime import datetime
 import sys
 import os
 
-#Definició de constants de la web de la eurolliga
+## Definició de constants de la web de la eurolliga
 SITE = "euroleague.net"
 
 class euroleague():
     URL = "https://www.euroleague.net"
     URI_ROBOTS = "/robots.txt"
     SITE = "euroleague.net"
+
+## Es defineix l'instanciador de la classe on s'avaluen els paràmetres per saber si s'han d'avaluar totes les temporades o no
     def __init__(self,delay,season):
         self.urlgame='https://www.euroleague.net/main/results/showgame?gamecode=257&seasoncode=E2017#!boxscore'
         self.estadistiques=""
@@ -30,7 +32,8 @@ class euroleague():
             self.season=season
         filepath=SITE + str(self.season) + ".csv"
         self.csv=open(filepath,'w+')
-    
+
+##  funció que cerca la informació que volem recollir dels jugardor i els equips de l'eurolliga  
     def scrapmatch(self,content):
         statplay=0
         equip=0
@@ -91,6 +94,8 @@ class euroleague():
         self.csv.write(self.estadistiques)
         self.estadistiques=""   
 
+## Funcio que iterativament va recollint el contingut dels partits de l'eurolliga per a realitzar la cerca
+## de les dades que volem recollir
     def webscrap(self,season):
         #ws=euroleague(self.delay,season)
         gamecode=1
@@ -103,11 +108,13 @@ class euroleague():
             urlgame='https://www.euroleague.net/main/results/showgame?gamecode=' + str(gamecode) + '&seasoncode=E' + str(season) + '#!boxscore'
             time.sleep(self.delay)
             page = requests.get(urlgame)
-    
+
+## Funció que defineix la capçalera del fitxer csv a crear amb les dades recollides.
     def capçalera(self):
         cap="Data partit, Camp, Temporada, Ronda, Fase, Equip, Punts, Entrenador, Jugador, Minuts, Punts, Intents2, Intents3, Tirs lliures, Rebots ofensius, Rebots defensius, Rebots totals, Assistencies, Robatoris, Perdues, Bloquejos fets, Bloquejos rebuts, Faltes realitzades,Faltes rebudes, PIR (Performance Index Rating)"
         return cap
 
+## Funció que genera el fitxer CSV amb les dades recollides.
     def generarCSV(self):
         #ws=euroleague(self.delay,self.season)
         cap=self.capçalera()

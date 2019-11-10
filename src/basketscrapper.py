@@ -21,6 +21,8 @@ if len (sys.argv) != PARAMETRES :
 competicio = sys.argv[PARAMETRES - 2]
 anycompeticio=sys.argv[PARAMETRES -1]
 
+## Avaluem el paràmetre introduït per saber quines llibreries carreguem i quines constants 
+## definim segons el tipus de competició
 if (competicio == "euroleague"):
     from euroleague import *
     URL = "https://www.euroleague.net"
@@ -42,8 +44,10 @@ if (existeixRobots):
     DELAY_PETICIONES = testRobots.existeix_delay(USER_AGENT)
     sitemap = rob.sitemaps
 
-print("La url d'estadistiques esta permesa?",testRobots.url_permesa("https://www.euroleague.net/main/statistics",USER_AGENT))
-print("La url de resultats esta permesa?",testRobots.url_permesa("https://www.euroleague.net/main/results",USER_AGENT))
+## Avaluem les URL's de la competició especificada que contenen les estadístiques
+if (competicio == "euroleague"):
+    print("La url d'estadistiques esta permesa?",testRobots.url_permesa("https://www.euroleague.net/main/statistics",USER_AGENT))
+    print("La url de resultats esta permesa?",testRobots.url_permesa("https://www.euroleague.net/main/results",USER_AGENT))
 
 ## Tamany de la web
 tamanyWeb = testRobots.tamany_web(SITE)
@@ -54,10 +58,10 @@ tecnologiaWeb = builtwith.builtwith(URL)
 ## Propietari de la web
 propietariWeb = whois.whois(URL)
 
-#Web Scraping
+#Web Scraping del domini avaluat
 stats=euroleague(DELAY_PETICIONES,anycompeticio)
 stats.generarCSV()
 
-## Exportació de dades
+## Exportació de dades informatives sobre el domini avaluat
 exportPdf=CustomPDF()
 exportPdf.informacio_scrap_pdf(SITE + ".pdf",existeixRobots,rob,DELAY_PETICIONES,sitemap,tamanyWeb,tecnologiaWeb,propietariWeb)
