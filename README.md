@@ -1,7 +1,6 @@
 # WebScraping
-M2.951 - Tipologia i cicle de vida de les dades - Pràctica 1 - WebScraping
 
-## Descripció
+M2.951 - Tipologia i cicle de vida de les dades - Pràctica 1 - WebScraping
 
 ## Membres de l'equip
 
@@ -15,6 +14,19 @@ Podem trobar els fitxers de codi font a la carpeta **src**:
 * **robots.py**: llibreria que ens permet realitzar l’avaluació inicial d’un site.
 * **export.py**:  llibreria que ens permet generar un fitxer pdf amb la informació que se li passa.
 * **euroleague.py**: llibreria que ens permet realitzar el web scraping a la web d’estadístiques de l’eurolliga.
+
+## Documentació
+
+Les respostes a la pràctica, així com la documentació generada pel web scraping la podem trobar a la carpeta **pdf**:
+
+* **daniellopez_prac1.pdf**: document pdf amb les respostes a la pràctica.
+* **euroleague.net.pdf**: document pdf amb l'avaluació inicial del site.
+
+## Dataset
+
+Per a la pràctica s'han generat dos datasets corresponents a les dades de les temporades 2017 i 2018 de l'Eurolliga que es troben a la carpeta **csv**:
+* **euroleague.net2017.csv**: dades corresponents a la temporada 2017-2018.
+* **euroleague.net2018.csv**: dades corresponents a la temporada 2018-2019.
 
 ## Requeriments
 
