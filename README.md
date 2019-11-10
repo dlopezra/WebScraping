@@ -1,54 +1,60 @@
 # WebScraping
+
 M2.951 - Tipologia i cicle de vida de les dades - Pràctica 1 - WebScraping
 
-Descripció
+## Membres de l'equip
 
-Membres de l'equip
+La pràctica ha estat realitzada per **Daniel López**. 
 
-Fitxers de codi font
+## Fitxers de codi font
 
+Podem trobar els fitxers de codi font a la carpeta **src**:
 
+* **basketscrapper.py**: funció principal per a realitzar el web scraping. Primer de tot es realitza una avaluació inicial del site, revisant el fitxer robots.txt, el sitemap, la grandària del site, la tecnologia emprada i el propietari del lloc. Aquesta informació s’extreu amb l’ajut de la llibreria “Robots.py”, i a més es guarda en un fitxer pdf (en el nostre cas euroleague.pdf) amb l’ajut de la llibreria “Export.py”. La informació recollida ens permet realitzar el web scraping de la web d’estadístiques ajustant els diversos valors recollits, i generant el dataset amb l’ajut de la llibreria “euroleague.py”.
+* **robots.py**: llibreria que ens permet realitzar l’avaluació inicial d’un site.
+* **export.py**:  llibreria que ens permet generar un fitxer pdf amb la informació que se li passa.
+* **euroleague.py**: llibreria que ens permet realitzar el web scraping a la web d’estadístiques de l’eurolliga.
+
+## Documentació
+
+Les respostes a la pràctica, així com la documentació generada pel web scraping la podem trobar a la carpeta **pdf**:
+
+* **daniellopez_prac1.pdf**: document pdf amb les respostes a la pràctica.
+* **euroleague.net.pdf**: document pdf amb l'avaluació inicial del site.
+
+## Dataset
+
+Per a la pràctica s'han generat dos datasets corresponents a les dades de les temporades 2017 i 2018 de l'Eurolliga que es troben a la carpeta **csv**:
+* **euroleague.net2017.csv**: dades corresponents a la temporada 2017-2018.
+* **euroleague.net2018.csv**: dades corresponents a la temporada 2018-2019.
+
+## Requeriments
+
+Per a poder executar el codi font abans esmentat es requereix la instal·lació de les següents llibrerires:
+```
 pip install requests
 pip install lxml
 pip install beautifulsoup4
 pip install fpdf
+```
+## Execució
 
-Recursos
+Per a poder executar l'script:
+```
+python basketscrapper.py <competició> <any>
+```
+On competició pot ser (**actualment només està definit el mòdul per l'eurolliga**): 
+* euroleague
+* acb
+* nba
 
-www.euroleague.net
-https://www.euroleague.net/main/results/showgame?gamecode=65&seasoncode=E2018
-view-source:https://www.euroleague.net/main/results/showgame?gamecode=65&seasoncode=E2018
-https://www.euroleague.net/main/results/showgame?gamecode=259&seasoncode=E2017#!boxscore
-view-source:https://www.euroleague.net/main/results/showgame?gamecode=257&seasoncode=E2017
-https://rdrr.io/cran/BAwiR/
-https://docs.python.org/3/library/urllib.robotparser.html
-https://github.com/c4software/python-sitemap
-https://pypi.org/project/ultimate-sitemap-parser/
-https://pyfpdf.readthedocs.io/en/latest/index.html
-https://www.pythonforbeginners.com/system/python-sys-argv
-https://stackoverflow.com/questions/21570780/using-python-and-beautifulsoup-saved-webpage-source-codes-into-a-local-file
-https://stackoverflow.com/questions/32938575/grabbing-a-certain-td-class-with-beautifulsoup
-https://www.daniweb.com/programming/software-development/threads/405662/beautifulsoup-to-extract-multiple-td-tags-within-tr
-https://datascience.stackexchange.com/questions/10857/how-to-scrape-a-table-from-a-webpage
-https://stackoverflow.com/questions/41687476/using-beautiful-soup-to-find-specific-class
-https://stackoverflow.com/questions/22217713/how-to-select-a-class-of-div-inside-of-a-div-with-beautiful-soup?rq=1
-https://linuxhint.com/python-beautifulsoup-tutorial-for-beginners/
-https://medium.com/@epicshane/using-beautifulsoup4-to-find-class-exact-match-3e263a95e330
-https://www.crummy.com/software/BeautifulSoup/bs4/doc/#next-element-and-previous-element
-https://www.w3schools.com/python/python_ref_string.asp
-https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
-https://www.crummy.com/software/BeautifulSoup/bs4/doc/#navigablestring
-https://stackoverflow.com/questions/275018/how-can-i-remove-a-trailing-newline
-https://pythontic.com/datetime/datetime/attributes
-https://www.w3schools.com/python/python_file_write.asp
-https://tutorial.eyehunts.com/python/python-create-file-empty-text-file-not-exist/
-https://stackoverflow.com/questions/30559214/get-date-and-time-of-installation-for-packages-installed-via-pip?lq=1
-https://stackoverflow.com/questions/24736316/see-when-packages-were-installed-updated-using-pip/24736563#24736563
-https://www.pythonforbeginners.com/argv/more-fun-with-sys-argv
+I any pot ser: 
+* 2000
+* 2016
+* tots
 
-https://nycdatascience.com/blog/student-works/web-scraping/web-scraping-nba-stats/
-https://towardsdatascience.com/web-scraping-nba-stats-4b4f8c525994
-https://stackoverflow.com/questions/54994665/scraping-nba-advanced-stats-with-python-beautifulsoup
-https://www.r-bloggers.com/scraping-nba-game-data-from-basketball-reference-com/
-http://kevincsong.com/Scraping-stats.nba.com-with-python/
-https://github.com/ccagrawal/nbaTools
+### Exemples
+```
+python basketscrapper.py euroleague 2018
+python basketscrapper.py euroleague tots
+```
